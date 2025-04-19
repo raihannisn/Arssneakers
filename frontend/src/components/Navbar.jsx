@@ -37,7 +37,7 @@ const Navbar = () => {
         <img onClick={() => setShowSearch(true)} src={assets.search_icon} className='w-5 cursor-pointer' alt="" />
 
         <div className='group realative'>
-            <img className='w-5 cursor-pointer' src={assets.profile_icon} alt="" />
+            <Link to='/login'><img className='w-5 cursor-pointer' src={assets.profile_icon} alt="" /></Link>
             <div className='group-hover:flex hidden absolute dropdown-menu right-30 pt-4'>
                 <div className='flex flex-col gap-2 w-36 py-3 px-5 bg-slate-100 text-gray-500 rounded'>
                     <p className='cursor-pointer hover:text-black'>My Profile</p>
@@ -60,10 +60,10 @@ const Navbar = () => {
               <img className='h-4 rotate-180' src={assets.dropdown_icon} alt="" />
               <p className='cursor-pointer'>Back</p>
             </div>
-            <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border-b-1' to='/'>HOME</NavLink>
-            <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border-b-1' to='/collection'>COLLECTION</NavLink>
-            <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border-b-1' to='/about'>ABOUT</NavLink>
-            <NavLink onClick={()=>setVisible(false)} className='py-2 pl-6 border-b-1' to='/contact'>CONTACT</NavLink>
+            <NavLink onClick={()=>setvisible(false)} className='py-2 pl-6 border-b-1' to='/'>HOME</NavLink>
+            <NavLink onClick={()=>setvisible(false)} className='py-2 pl-6 border-b-1' to='/collection'>COLLECTION</NavLink>
+            <NavLink onClick={()=>setvisible(false)} className='py-2 pl-6 border-b-1' to='/about'>ABOUT</NavLink>
+            <NavLink onClick={()=>setvisible(false)} className='py-2 pl-6 border-b-1' to='/contact'>CONTACT</NavLink>
           </div>
       </div>
 
