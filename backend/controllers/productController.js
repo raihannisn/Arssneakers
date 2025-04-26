@@ -5,19 +5,19 @@ const addProduct = async (req, res) => {
     try {
         const { name, description, price, category, subCategory, sizes, bestSeller } = req.body
 
-        const image1 = req.files.image1[0].path
-        const image2 = req.files.image2[0].path
-        const image3 = req.files.image3[0].path
-        const image4 = req.files.image4[0].path
+        const image1 = req.files.image1 && req.files.image1[0]
+        const image2 = req.files.image2 && req.files.image2[0]
+        const image3 = req.files.image3 && req.files.image3[0]
+        const image4 = req.files.image4 && req.files.image4[0]
 
         console.log( name, description, price, category, subCategory, sizes, bestSeller )
-        console.log( image1, image2, image3, image4 )
+        console.log(image1,image2,image3,image4)
 
         res.json({})
         
     } catch (error) {
-        console.log(error);~
-        req.json({ success: false, message: error.message })        
+        console.log(error);
+        res.json({ success: false, message: error.message })        
     }
     
 }
