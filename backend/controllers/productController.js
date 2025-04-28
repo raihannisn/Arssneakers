@@ -26,9 +26,9 @@ const addProduct = async (req, res) => {
             category,
             price: Number(price),
             subCategory,
-            bestSeller: bestSeller === 'true' ? true : false,
+            bestseller: bestSeller === 'true' ? true : false,
             sizes: JSON.parse(sizes),
-            images: imagesUrl,
+            image: imagesUrl,
             date: Date.now()
         }
 
@@ -48,20 +48,49 @@ const addProduct = async (req, res) => {
 
 // function for list product
 const listProduct = async (req, res) => {
-    
+    try {
+        
+        const products = await productModel.find({})
+        res.json({success: true, products})
 
+    } catch (error) {
+        console.log(error);
+        res.json({ success: false, message: error.message })
+    }
 }
 
 // function for remove product
-const removeProduct = async (req, res) => {
-    
+import mongoose from 'mongoose'
 
+const removeProduct = async (req, res) => {
+    try {
+        const { id } = req.body;
+
+        if (!mongoose.Types.ObjectId.isValid(id)) {
+            return res.status(400).json({ success: false, message: 'Invalid product ID' });
+        }
+
+        await productModel.findByIdAndDelete(id)
+        res.json({ success: true, message: 'Product removed successfully' })
+    } catch (error) {
+        console.log(error)
+        res.json({ success: false, message: error.message })
+    }
 }
+
 
 // function for single product info
 const singleProduct = async (req, res) => {
-    
+    try {
+        
+        const {productId} = req.body
+        const product = await productModel.findById(productId)
+        res.json({success: true, product})
 
+    } catch (error) {
+        console.log(error)
+        res.json({ success: false, message: error.message })
+    }
 }
 
 export { addProduct, listProduct, removeProduct, singleProduct }
