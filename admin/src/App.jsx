@@ -19,17 +19,17 @@ const App = () => {
       { token === ""
       ? <Login  setToken={setToken}/>
       : <>
-      <Navbar />
+      <Navbar setToken={setToken}/>
       <hr className='border-gray-300' />
       <div className='flex w-full'>
         <Sidebar />
         <div className='w-[70%] mx-auto ml-[max(5vw,25px)] my-8 text-gray-600'>
         <Routes>
-          <Route path="/" element={<Navigate to="/home" />} />
-          <Route path="/home" element={<Home />} />
-          <Route path="/add" element={<Add />} />
-          <Route path="/list" element={<List />} />
-          <Route path="/orders" element={<Orders />} />
+          <Route path="/" element={<Navigate to="/" />} />
+          <Route path="/home" element={<Home token = {token} />} />
+          <Route path="/add" element={<Add token = {token} />} />
+          <Route path="/list" element={<List token = {token} />} />
+          <Route path="/orders" element={<Orders token = {token} />} />
         </Routes>
         </div>
       </div>
